@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有效的个人生产力 - 0221课程时间轴</title>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 80%;
+            margin: auto;
+        }
+        .line {
+            width: 5px;
+            background: #007bff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .event {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 15px 0;
+            position: relative;
+        }
+        .event-content {
+            width: 40%;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .event:nth-child(odd) .event-content {
+            margin-left: 55%;
+        }
+        .event:nth-child(even) .event-content {
+            margin-right: 55%;
+        }
+        .event.completed .event-content {
+            background: #d4edda; /* 绿色 - 已完成 */
+        }
+        .event.today .event-content {
+            background: #ffeb99; /* 黄色 - 今天 */
+            border: 2px solid #ff9800;
+        }
+        .event-content:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .date {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .circle {
+            width: 15px;
+            height: 15px;
+            background: #007bff;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 50%;
+            margin-top: -7.5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>有效的个人生产力 - 课程时间轴</h2>
+<div class="timeline-container">
+    <div class="line"></div> <!-- 中间的时间线 -->
+</div>
+
+<script>
+    const schedule = [
+        { title: "开课会（Kick-off meeting）", date: "2025-02-21" },
+        { title: "主管及WWA三方访谈（Supervisor & WWA Triangle Communication）", date: "2025-02-24" },
+        { title: "目标设定工作坊（Goal Setting Workshop）", date: "2025-03-07" },
+        { title: "生产力的本质（The Nature of Productivity）", date: "2025-03-14" },
+        { title: "通过目标提升生产力（Productivity Through Goals Achievement）", date: "2025-03-21" },
+        { title: "通过管理优先顺序提高生产力（Increasing Productivity Through Managing Priorities）", date: "2025-03-28" },
+        { title: "期中评估（Mid-Term Evaluation Triangle Communication）", date: "2025-03-31" },
+        { title: "通过沟通提高生产力（Improving Productivity Through Communication）", date: "2025-04-11" },
+        { title: "授权团队以达最佳绩效（Empowering The Team For Peak Performance）", date: "2025-04-18" },
+        { title: "提高团队生产力（Increasing Productivity Of The Team）", date: "2025-04-25" },
+        { title: "最终评估（Final Evaluation Triangle Communication）", date: "2025-04-28" },
+        { title: "毕业典礼 + 颁发证书（Graduation Ceremony）", date: "2025-05-09" }
+    ];
+
+    const today = dayjs().format('YYYY-MM-DD');
+    const timeline = document.querySelector(".timeline-container");
+
+    schedule.forEach((event, index) => {
+        let eventDiv = document.createElement("div");
+        eventDiv.classList.add("event");
+        
+        let eventContent = document.createElement("div");
+        eventContent.classList.add("event-content");
+
+        if (dayjs(event.date).isBefore(today)) {
+            eventDiv.classList.add("completed"); // 过去的课程标记为已完成
+        } else if (event.date === today) {
+            eventDiv.classList.add("today"); // 今天的课程高亮
+        }
+
+        eventContent.innerHTML = `<div class="date">${event.date}</div><h4>${event.title}</h4>`;
+
+        let circle = document.createElement("div");
+        circle.classList.add("circle");
+
+        eventDiv.appendChild(circle);
+        eventDiv.appendChild(eventContent);
+        timeline.appendChild(eventDiv);
+    });
+</script>
+
+</body>
+</html>
