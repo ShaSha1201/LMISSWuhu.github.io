@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>客户项目仪表盘</title>
+</head>
+<body>
+<div class="navbar">
+<a href="index.html">首页</a>
+<a href="about.html">关于</a>
+<a href="contact.html">联系</a>
+</div>
+    <h1>客户：CC</h1>
+    <p>项目：EPP 有效的个人生产力</p>
+    <p>项目时间：2025/2/21-2025/5/9</p>
+  <style>
+    a {
+        color: blue;
+        text-decoration: none; /* 去掉下划线 */
+        padding: 10px;
+        border: 1px solid gray;
+    }
+</style>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <title>领导力成长雷达图</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .chart-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        .analysis-section {
+            margin-top: 40px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background: #f9fafb;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="chart-title">领导力成长雷达图 🌟</h2>
+    
+    <!-- 雷达图容器 -->
+    <div style="width: 100%; height: 600px;">
+        <canvas id="radarChart"></canvas>
+    </div>
+
+    <!-- 新增分析指南模块 -->
+    <div class="analysis-section">
+        <h3>能力成长三维解读：</h3>
+        
+        <div class="progress-bar">
+            <div class="current-score">🔥 重点突破领域（差距＞2分）：</div>
+            <div class="bar">
+                <div class="bar-current" style="width: 60%;"></div>
+                <div class="bar-expected" style="width: 40%; background-color: #3498db;"></div>
+            </div>
+            <div class="score-list">
+                <div class="item"><strong>教练技巧</strong> 3→6 (+3)</div>
+                <div class="item"><strong>激励他人</strong> 3→7 (+4)</div>
+                <div class="item"><strong>生活平衡</strong> 6→8 (+2)</div>
+            </div>
+        </div>
+
+        <div class="strengths">
+            <div class="current-score">💡 核心优势领域（稳定在8分+）：</div>
+            <div class="bar">
+                <div class="bar-current" style="width: 100%; background-color: #3498db;"></div>
+            </div>
+            <div class="score-list">
+                <div class="item"><strong>解决问题能力</strong> 8分</div>
+                <div class="item"><strong>决策质量</strong> 7分</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 雷达图数据配置（保持不变）
+        const radarData = {
+            labels: [
+                "组织技能", "目标设定", "计划能力", "沟通技巧",
+                "授权管理", "教练水平", "任务达成", "解决问题",
+                "决策质量", "团队协作", "激励他人", "压力管理",
+                "处理干扰", "生活平衡", "自我驱动"
+            ],
+            datasets: [{
+                label: '当前水平',
+                data: [6,5,4,4,6,3,3,8,7,7,3,6,3,6,7],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+            }, {
+                label: '期待目标',
+                data: [8,9,8,7,9,6,7,9,8,9,7,7,8,8,8],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+            }]
+        };
+
+        // 配置选项（保持不变）
+        const radarOptions = {
+            scales: { r: { min: 0, max: 10 } },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `当前值: ${context.raw[0]}\n期待值: ${context.raw[1]}`
+                        }
+                    }
+                }
+            }
+        };
+
+        // 创建雷达图（保持不变）
+        const radarChart = new Chart(
+            document.getElementById('radarChart'),
+            { type: 'radar', data: radarData, options: radarOptions }
+        );
+    </script>
+ </div>
+ </div>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有效的个人生产力 - 0221课程时间轴</title>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 80%;
+            margin: auto;
+        }
+        .line {
+            width: 5px;
+            background: #007bff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .event {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 15px 0;
+            position: relative;
+        }
+        .event-content {
+            width: 40%;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .event:nth-child(odd) .event-content {
+            margin-left: 55%;
+        }
+        .event:nth-child(even) .event-content {
+            margin-right: 55%;
+        }
+        .event.completed .event-content {
+            background: #d4edda; /* 绿色 - 已完成 */
+        }
+        .event.today .event-content {
+            background: #ffeb99; /* 黄色 - 今天 */
+            border: 2px solid #ff9800;
+        }
+        .event-content:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .date {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .circle {
+            width: 15px;
+            height: 15px;
+            background: #007bff;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 50%;
+            margin-top: -7.5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>有效的个人生产力 - 课程时间轴</h2>
+<div class="timeline-container">
+    <div class="line"></div> <!-- 中间的时间线 -->
+</div>
+
+<script>
+    const schedule = [
+        { title: "开课会（Kick-off meeting）", date: "2025-02-21" },
+        { title: "主管及WWA三方访谈（Supervisor & WWA Triangle Communication）", date: "2025-02-24" },
+        { title: "目标设定工作坊（Goal Setting Workshop）", date: "2025-03-07" },
+        { title: "生产力的本质（The Nature of Productivity）", date: "2025-03-14" },
+        { title: "通过目标提升生产力（Productivity Through Goals Achievement）", date: "2025-03-21" },
+        { title: "通过管理优先顺序提高生产力（Increasing Productivity Through Managing Priorities）", date: "2025-03-28" },
+        { title: "期中评估（Mid-Term Evaluation Triangle Communication）", date: "2025-03-31" },
+        { title: "通过沟通提高生产力（Improving Productivity Through Communication）", date: "2025-04-11" },
+        { title: "授权团队以达最佳绩效（Empowering The Team For Peak Performance）", date: "2025-04-18" },
+        { title: "提高团队生产力（Increasing Productivity Of The Team）", date: "2025-04-25" },
+        { title: "最终评估（Final Evaluation Triangle Communication）", date: "2025-04-28" },
+        { title: "毕业典礼 + 颁发证书（Graduation Ceremony）", date: "2025-05-09" }
+    ];
+
+    const today = dayjs().format('YYYY-MM-DD');
+    const timeline = document.querySelector(".timeline-container");
+
+    schedule.forEach((event, index) => {
+        let eventDiv = document.createElement("div");
+        eventDiv.classList.add("event");
+        
+        let eventContent = document.createElement("div");
+        eventContent.classList.add("event-content");
+
+        if (dayjs(event.date).isBefore(today)) {
+            eventDiv.classList.add("completed"); // 过去的课程标记为已完成
+        } else if (event.date === today) {
+            eventDiv.classList.add("today"); // 今天的课程高亮
+        }
+
+        eventContent.innerHTML = `<div class="date">${event.date}</div><h4>${event.title}</h4>`;
+
+        let circle = document.createElement("div");
+        circle.classList.add("circle");
+
+        eventDiv.appendChild(circle);
+        eventDiv.appendChild(eventContent);
+        timeline.appendChild(eventDiv);
+    });
+</script>
+</div>
+
+    <!-- 返回主页链接 -->
+    <p><a href="index.html">返回首页</a></p>
+</body>
+</html>
