@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>关于</title>
+<body>
+     <style>
+    a {
+        color: blue;
+        text-decoration: none; /* 去掉下划线 */
+        padding: 10px;
+        border: 1px solid gray;
+    }
+</style>
+    <div class="navbar">
+    <a href="index.html">首页</a>
+    <a href="about.html">关于</a>
+    <a href="contact.html">联系</a>
+</div>
+    <style>
+        /* 可选：添加基础样式让内容居中 */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            width: 500px; /* 控制图片宽度 */
+            border-radius: 10px; /* 圆角效果 */
+        }
+        }
+    </style>
+</head>
+<body>
+    <h1>关于LMI全方位领导人®</h1>
+    <!-- 添加本地图片 -->
+    <img src="images/LMI课程体系.png" alt="全方位领导人">
+    <!-- 返回主页链接 -->
+    <p><a href="index.html">返回首页</a></p>
+</body>
+</html>
